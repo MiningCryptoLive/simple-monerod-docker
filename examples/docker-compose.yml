@@ -7,7 +7,7 @@ services:
     restart: unless-stopped
     container_name: monerod
     volumes:
-      - bitmonero:/home/monero/.bitmonero
+      - bitmonero:/home/pool/.bitmonero
     ports:
       - 18080:18080
       - 18089:18089
@@ -18,6 +18,12 @@ services:
       - "--no-igd"
       - "--enable-dns-blocklist"
       - "--prune-blockchain"
+      - "--non-interactive"
+      - "--confirm-external-bind"
+      - "--out-peers=32"
+      - "--in-peers=64"
+      - "--disable-dns-checkpoints"
+      
 
   tor:
     image: goldy/tor-hidden-service:latest
